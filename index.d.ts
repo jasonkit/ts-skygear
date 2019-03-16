@@ -154,19 +154,12 @@ declare module "skygear" {
     ErrorCodes: ErrorCodeType;
     AuthContainer: typeof AuthContainer;
     // RelationContainer: typeof RelationContainer;
-    DatabaseContainer: typeof DatabaseContainer;
     PubsubContainer: typeof PubsubContainer;
     PushContainer: typeof PushContainer;
 
     config(options: { apiKey: string; endPoint: string }): Promise<Container>;
 
     lambda(action: string, params: any): Promise<any>;
-  }
-
-  export class DatabaseContainer {
-    constructor(container: Container);
-
-    uploadAsset(asset: Asset): Promise<Asset>;
   }
 
   export interface LinkOAuthProviderOption {
@@ -364,6 +357,8 @@ declare module "skygear" {
       query: Query,
       cacheCallback?: boolean
     ): Promise<QueryResult<T>>;
+
+    uploadAsset(asset: Asset): Promise<Asset>;
   }
 
   interface DatabaseSaveOptions {
